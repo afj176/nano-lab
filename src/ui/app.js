@@ -99,7 +99,7 @@ function Header({ onPalette, onStorage }) {
 }
 
 /* ---------- composer ---------- */
-function Composer({ onRun }) {
+function Composer({ onRun, onStorage }) {
   const modelList = h('div.model-list', { role: 'radiogroup', 'aria-label': 'Model' });
   const promptLabel = h('label.field-label', { htmlFor: 'prompt' });
   const counter = h('span.counter');
@@ -203,7 +203,8 @@ function Composer({ onRun }) {
       widgets.push({ el: h('div.field', h('span.field-label', 'Backend'), seg.el), setDisabled: seg.setDisabled });
     }
     clear(controls, widgets.map((w) => w.el));
-    note.textContent = model.note;
+    clear(note, icon('HardDrive', 14), h('span', model.note, ' Saved in this browser, not your Downloads folder. ',
+      h('button.link-button', { type: 'button', onclick: onStorage }, 'See storage')));
     paintState();
   }
 
@@ -642,7 +643,7 @@ export function mountApp(root) {
     ];
   });
 
-  composer = Composer({ onRun: run });
+  composer = Composer({ onRun: run, onStorage: openStorage });
   stage = Stage({
     onRun: run, onFocusPrompt: () => composer.focus(),
     onTranscribe: async (blob) => {
@@ -658,6 +659,11 @@ export function mountApp(root) {
   clear(root,
     h('div.shell', { id: 'top' },
       Header({ onPalette: palette.open, onStorage: openStorage }),
+      !state.storageNoticeDismissed && h('div.notice.notice-info', { role: 'note' },
+        icon('HardDrive', 18),
+        h('span', h('strong', 'Where do the models go? '), 'Each model downloads once and is saved inside this browser\'s own storage for this site — not in your Downloads folder, and other sites can\'t read it. You can see the space used and delete everything at any time.'),
+        h('button.button.ghost.small', { type: 'button', onclick: openStorage }, 'Manage storage'),
+        h('button.icon-button.small', { type: 'button', 'aria-label': 'Dismiss', onclick: (e) => { state.storageNoticeDismissed = true; saveSettings(); e.currentTarget.parentElement.remove(); } }, icon('X', 14))),
       constrained && !state.noticeDismissed && h('div.notice', { role: 'note' },
         icon('Smartphone', 16),
         h('span', 'On phones and low-memory devices, stick to Text and Transcribe. Image, video and the larger speech model can exhaust memory and reload the tab.'),

@@ -80,6 +80,7 @@ export function openStorageDialog({ isBusy }) {
     };
 
     clear(body,
+      h('p.storage-intro', 'Models are saved in this browser\'s site storage (its Cache Storage, inside your browser profile) so they only download once. They are not in your Downloads folder, other websites can\'t read them, and deleting them here removes them from your disk.'),
       h('div.storage-total',
         h('div', h('span.storage-big', formatBytes(used) === '—' ? '0 MB' : formatBytes(used)),
           h('span.storage-of', estimate.quota ? ` of ${formatBytes(estimate.quota)} available to this site` : ' used by this site')),
@@ -95,7 +96,7 @@ export function openStorageDialog({ isBusy }) {
         h('button.button.ghost.small', { type: 'button', disabled: !hasLoadedModels(), onclick: unload }, icon('Zap', 14), 'Release memory'),
         h('span.spacer'),
         entries.length > 0 && h('button.button.ghost.small', { type: 'button', onclick: clearAll }, icon('Trash2', 14), 'Delete all downloads')),
-      h('p.field-hint', 'Models live in this browser\'s cache. The browser may also evict them on its own when disk space runs low.'));
+      h('p.field-hint', 'Clearing this site\'s data in your browser settings removes them too, and the browser may evict them on its own when disk space runs low.'));
   }
   openDialog({ title: 'Storage', body, className: 'dialog-wide' });
   paint();

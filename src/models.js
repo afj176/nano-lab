@@ -57,7 +57,7 @@ export const MODALITIES = [
 const STT_DTYPES = { wasm: 'q8', webgpu: { encoder_model: 'fp32', decoder_model_merged: 'q4' } };
 const LANGUAGES = [['en', 'English'], ['es', 'Spanish'], ['fr', 'French'], ['de', 'German'], ['it', 'Italian'], ['pt', 'Portuguese'], ['nl', 'Dutch'], ['pl', 'Polish'], ['uk', 'Ukrainian'], ['ru', 'Russian'], ['tr', 'Turkish'], ['ar', 'Arabic'], ['hi', 'Hindi'], ['zh', 'Chinese'], ['ja', 'Japanese'], ['ko', 'Korean']];
 
-const BACKEND_NOTE = 'First run downloads the weights into your browser cache. The size depends on the backend.';
+const BACKEND_NOTE = 'Downloads once, on first run.';
 
 export const MODELS = [
   {

@@ -29,6 +29,7 @@ export const state = {
   params: Object.fromEntries(MODELS.map((m) => [m.id, { ...defaultParams(m), ...(saved.params?.[m.id] || {}) }])),
   backend: saved.backend || 'auto',
   noticeDismissed: !!saved.noticeDismissed,
+  storageNoticeDismissed: !!saved.storageNoticeDismissed,
   device: { webgpu: false, f16: false, checked: false },
   runs: read(RUNS_KEY, []).filter((r) => r && typeof r.seconds === 'number'),
   filter: 'all',
@@ -48,9 +49,9 @@ export function emit(...topics) {
 }
 
 export function saveSettings() {
-  const { theme, accent, type, model, prompts, params, backend, noticeDismissed } = state;
+  const { theme, accent, type, model, prompts, params, backend, noticeDismissed, storageNoticeDismissed } = state;
   try {
-    localStorage.setItem(SETTINGS_KEY, JSON.stringify({ theme, accent, type, model, prompts, params, backend, noticeDismissed }));
+    localStorage.setItem(SETTINGS_KEY, JSON.stringify({ theme, accent, type, model, prompts, params, backend, noticeDismissed, storageNoticeDismissed }));
   } catch { /* storage full or blocked: settings just don't persist */ }
 }
 

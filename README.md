@@ -20,6 +20,8 @@ npm run dev
 
 Open the address it prints. Models download the first time you use them, from about 30 MB to 665 MB each.
 
+**Where the models are stored:** inside the browser's own storage for the site (Cache Storage, in your browser profile), not in your Downloads folder. The Storage button in the app's header shows how much space they use and deletes them.
+
 ## What's included
 
 | Tab | Models |
