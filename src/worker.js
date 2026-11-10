@@ -125,7 +125,7 @@ async function runSpeech(model, prompt, params, backend) {
     kind: 'audio', seconds, blob: res.toBlob(), samples: res.audio, sampleRate: res.sampling_rate,
     metrics: [
       ['Audio length', `${duration.toFixed(1)} s`],
-      ['Vs real time', `${(duration / seconds).toFixed(1)}× faster`],
+      ['Speed', `${(duration / seconds).toFixed(1)}× real time`],
     ],
   };
 }
@@ -170,7 +170,7 @@ async function runTranscribe(model, clip, params, backend) {
     kind: 'text', text: text || '(no speech recognised)', seconds,
     metrics: [
       ['Audio length', `${clip.duration.toFixed(1)} s`],
-      ['Vs real time', `${(clip.duration / seconds).toFixed(1)}× faster`],
+      ['Speed', `${(clip.duration / seconds).toFixed(1)}× real time`],
       ['Words', String(text ? text.split(/\s+/).length : 0)],
       ...(whisper && params.language === 'auto' ? [['Language', detected ? `${detected} (detected)` : 'en (fallback)']] : []),
     ],

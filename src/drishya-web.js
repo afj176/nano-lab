@@ -2,10 +2,11 @@
 // Everything runs on the device with onnxruntime-web (WebGPU, WASM fallback). Model files are fetched once and kept in
 // the browser's Cache Storage. The sampler mirrors drishya/pipeline.py `sample_latents`, for text-to-video and for
 // image-to-video (a photo as the first frame: TAEW2.2's encoder gives its latent, loaded only when a photo is added).
-import * as ort from "https://cdn.jsdelivr.net/npm/onnxruntime-web@1.30.0/dist/ort.webgpu.min.mjs";
-import { AutoTokenizer, env as tjsEnv } from "https://cdn.jsdelivr.net/npm/@huggingface/transformers@4.3.0/dist/transformers.min.js";
+// Modified for Nano Lab: onnxruntime-web and Transformers.js versions updated from 1.30.0 / 4.3.0.
+import * as ort from "https://cdn.jsdelivr.net/npm/onnxruntime-web@1.31.1/dist/ort.webgpu.min.mjs";
+import { AutoTokenizer, env as tjsEnv } from "https://cdn.jsdelivr.net/npm/@huggingface/transformers@4.3.2/dist/transformers.min.js";
 
-export const ORT_VERSION = "1.30.0";
+export const ORT_VERSION = "1.31.1";
 export const DEFAULT_BASE = "https://huggingface.co/udgamlabs/Drishya-Tiny/resolve/main/onnx/";
 export const TOKENIZER = { repo: "Xenova/flan-t5-base", revision: "c6a1b98a4a35e1063d88edaceef4dc52cf3b2784" };
 // Weights are stored as fp16 and cast to fp32 inside each graph: half the download, fp32 maths (full fp16 compute gave
