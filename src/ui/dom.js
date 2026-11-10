@@ -1,10 +1,10 @@
 import {
   createElement,
-  Type, AudioLines, Image, Clapperboard, ChevronsUpDown, Check, Dices, Lock, LockOpen, Star, Info, CircleCheck, CircleAlert, X, Search, ArrowRight, Play, Pause, Download, Repeat, StepBack, StepForward, Maximize, Maximize2, Copy, TriangleAlert, Scale, Monitor, Sun, Moon, Palette, RotateCcw, Mic, HardDriveDownload, Cpu, ArrowUpRight, Square, Zap, RefreshCw, ArrowDownUp, Trash2, FlaskConical, Timer, Trophy, Circle, CornerUpLeft, History, PenLine, Upload, Languages, FileAudio, Captions, HardDrive, Smartphone,
+  Type, AudioLines, Image, Clapperboard, ChevronsUpDown, Check, Dices, Lock, LockOpen, Star, Info, CircleCheck, CircleAlert, X, Search, ArrowRight, Play, Pause, Download, Repeat, StepBack, StepForward, Maximize, Maximize2, Copy, TriangleAlert, Scale, Monitor, Sun, Moon, Palette, RotateCcw, Mic, HardDriveDownload, Cpu, ArrowUpRight, Square, Zap, RefreshCw, ArrowDownUp, Trash2, FlaskConical, Timer, Trophy, Circle, CornerUpLeft, History, PenLine, Upload, Languages, FileAudio, Captions, HardDrive, Smartphone, CodeXml,
 } from 'lucide';
 
 const ICONS = {
-  Type, AudioLines, Image, Clapperboard, ChevronsUpDown, Check, Dices, Lock, LockOpen, Star, Info, CircleCheck, CircleAlert, X, Search, ArrowRight, Play, Pause, Download, Repeat, StepBack, StepForward, Maximize, Maximize2, Copy, TriangleAlert, Scale, Monitor, Sun, Moon, Palette, RotateCcw, Mic, HardDriveDownload, Cpu, ArrowUpRight, Square, Zap, RefreshCw, ArrowDownUp, Trash2, FlaskConical, Timer, Trophy, Circle, CornerUpLeft, History, PenLine, Upload, Languages, FileAudio, Captions, HardDrive, Smartphone,
+  Type, AudioLines, Image, Clapperboard, ChevronsUpDown, Check, Dices, Lock, LockOpen, Star, Info, CircleCheck, CircleAlert, X, Search, ArrowRight, Play, Pause, Download, Repeat, StepBack, StepForward, Maximize, Maximize2, Copy, TriangleAlert, Scale, Monitor, Sun, Moon, Palette, RotateCcw, Mic, HardDriveDownload, Cpu, ArrowUpRight, Square, Zap, RefreshCw, ArrowDownUp, Trash2, FlaskConical, Timer, Trophy, Circle, CornerUpLeft, History, PenLine, Upload, Languages, FileAudio, Captions, HardDrive, Smartphone, CodeXml,
 };
 
 /** Tiny hyperscript helper: h('button.primary', {onclick}, 'Run') */

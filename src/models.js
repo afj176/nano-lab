@@ -160,5 +160,6 @@ export function defaultParams(model) {
 
 /** First-run download for the backend that will actually be used. */
 export const sizeFor = (model, backend) => model.sizes?.[backend] ?? model.size;
+export const REPO_URL = 'https://github.com/afj176/nano-lab';
 export const modelUrl = (model) => `https://huggingface.co/${model.repo}`;
 export const modality = (id) => MODALITIES.find((m) => m.id === id);

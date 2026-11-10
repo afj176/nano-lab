@@ -1,7 +1,7 @@
 import { h, icon, clear, formatSeconds, timeAgo } from './dom.js';
 import { Segmented, Slider, Select, SeedInput, Rating, Popover, Chip, Kbd, CommandPalette, toast, confirmDialog } from './components.js';
 import { AudioPlayer, VideoPlayer, ImageViewer, TextOutput } from './players.js';
-import { MODELS, MODALITIES, LICENSES, modality, modelUrl, stagesFor, sizeFor } from '../models.js';
+import { MODELS, MODALITIES, LICENSES, modality, modelUrl, stagesFor, sizeFor, REPO_URL } from '../models.js';
 import { openStorageDialog, openAboutDialog, isConstrainedDevice, HEAVY_BYTES } from './panels.js';
 import { state, subscribe, emit, saveSettings, saveRuns, addRun, currentModel, currentParams, resolveBackend } from '../store.js';
 import { runModel, requestStop } from '../runners.js';
@@ -77,6 +77,7 @@ function Header({ onPalette, onStorage }) {
       h('button.search-button', { type: 'button', onclick: onPalette, 'aria-label': 'Open command palette' },
         icon('Search', 14), h('span', 'Actions'), Kbd(MOD, 'K')),
       h('button.icon-button', { type: 'button', 'aria-label': 'Storage', 'data-tip': 'Storage', onclick: onStorage }, icon('HardDrive', 17)),
+      h('a.icon-button', { href: REPO_URL, target: '_blank', rel: 'noreferrer', 'aria-label': 'Source code on GitHub', 'data-tip': 'Source on GitHub' }, icon('CodeXml', 17)),
       h('button.icon-button', { type: 'button', 'aria-label': 'About and licenses', 'data-tip': 'About & licenses', onclick: openAboutDialog }, icon('Info', 17)),
       appearance.el));
 
@@ -636,6 +637,7 @@ export function mountApp(root) {
       { group: 'History', label: 'Export runs as JSON', icon: 'Download', run: () => history.exportRuns() },
       { group: 'History', label: 'Clear run history', icon: 'Trash2', run: () => history.clearAll() },
       { group: 'App', label: 'Storage and downloads', icon: 'HardDrive', keywords: 'cache delete models memory', run: openStorage },
+      { group: 'App', label: 'View source on GitHub', icon: 'CodeXml', keywords: 'repo repository code', run: () => window.open(REPO_URL, '_blank', 'noopener') },
       { group: 'App', label: 'About and licenses', icon: 'Info', keywords: 'license credits', run: openAboutDialog },
     ];
   });
@@ -663,7 +665,7 @@ export function mountApp(root) {
       h('main.workspace', composer.el, stage.el),
       history.el,
       h('footer.footer',
-        h('span', 'Nano Lab · small models, run locally in your browser'),
+        h('span', 'Nano Lab · small models, run locally in your browser · ', h('a.footer-link', { href: REPO_URL, target: '_blank', rel: 'noreferrer' }, 'Source on GitHub')),
         h('span.footer-keys', Kbd(MOD, 'K'), 'actions', Kbd(MOD, '↵'), 'run', Kbd('/'), 'prompt'))));
 
   document.addEventListener('keydown', (e) => {

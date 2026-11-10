@@ -1,6 +1,6 @@
 import { h, icon, clear, formatBytes } from './dom.js';
 import { openDialog, confirmDialog, toast, Chip } from './components.js';
-import { MODELS, LICENSES, modality, modelUrl } from '../models.js';
+import { MODELS, LICENSES, modality, modelUrl, REPO_URL } from '../models.js';
 import { unloadModels, hasLoadedModels } from '../runners.js';
 
 /* ---------- device class ---------- */
@@ -121,6 +121,7 @@ export function openAboutDialog() {
     title: 'About Nano Lab', className: 'dialog-wide',
     body: h('div.about',
       h('p', 'Nano Lab runs small generative models entirely in your browser. Prompts, audio and outputs never leave this device; the only network traffic is downloading the app and the model files.'),
+      h('p', 'The app is open source under the MIT license: ', h('a.text-link', { href: REPO_URL, target: '_blank', rel: 'noreferrer' }, 'github.com/afj176/nano-lab'), '.'),
       h('h3', 'Models'),
       h('ul.about-list', MODELS.map((m) => h('li',
         h('span.tile-icon', icon(modality(m.type).icon, 15)),

@@ -1,5 +1,9 @@
 # Nano Lab
 
+**Live at [nanolab.fyi](https://nanolab.fyi)** · [source on GitHub](https://github.com/afj176/nano-lab)
+
+![Nano Lab generating speech in the browser, dark theme with the rose accent](docs/screenshot.png)
+
 Nano Lab is a local-first playground for exploring the frontier of small generative models. Its vision is a single, approachable workspace where curious builders can run text, speech, transcription, image, and video models in the browser, compare the cost and speed of real runs, and judge output quality for themselves. It is an experiment in making the tradeoffs behind on-device AI visible—not a claim that every modality is already tiny or equally mature.
 
 ## Run locally
@@ -30,7 +34,7 @@ Keyboard: Ctrl/⌘ K opens the command palette, Ctrl/⌘ Enter runs, `/` focuses
 
 ## Deploying to GitHub Pages
 
-The site is fully static. `vite.config.js` uses relative asset paths, so the same build works from `username.github.io/repo/` or a domain root.
+The site is deployed at [nanolab.fyi](https://nanolab.fyi), a custom domain set in the repository's Pages settings (DNS: four A records for the apex pointing at GitHub Pages, and a `www` CNAME to `afj176.github.io`). The site is fully static. `vite.config.js` uses relative asset paths, so the same build works from `username.github.io/repo/` or a domain root.
 
 1. Create a GitHub repository and push this folder to its `main` branch.
 2. In the repository, open Settings → Pages and set Source to "GitHub Actions".
